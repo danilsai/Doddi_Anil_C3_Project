@@ -1,5 +1,3 @@
-import java.sql.Time;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +18,7 @@ public class Restaurant {
 
     public boolean isRestaurantOpen() {
 
-        return getCurrentTime().isAfter(openingTime) && getCurrentTime().isBefore(closingTime) ? true : false;
+        return getCurrentTime().isAfter(openingTime) && getCurrentTime().isBefore(closingTime);
 
     }
 
@@ -58,6 +56,18 @@ public class Restaurant {
                 +"Closing time:"+ closingTime +"\n"
                 +"Menu:"+"\n"+getMenu());
 
+    }
+    public int calculateOrderPrice(ArrayList<String> selectedItemsList){
+        int price = 0;
+        for(String itemName : selectedItemsList){
+            for(int i = 0; i < menu.size(); i++){
+                if(itemName.equals(menu.get(i).getName())){
+                    price += menu.get(i).getPrice();
+                }
+            }
+        }
+
+        return price ;
     }
 
     public String getName() {

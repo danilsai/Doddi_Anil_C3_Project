@@ -68,4 +68,26 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    //<<<<<<<<<<<<<<<<<<<<<<Order Price>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void order_price_should_be_0_when_items_are_not_selected(){
+        ArrayList<String> selectedItem = new ArrayList<String>();
+        assertEquals(0, restaurant.calculateOrderPrice(selectedItem));
+    }
+
+    @Test
+    public void order_price_should_be_119_when_user_select_Sweet_corn_soup(){
+        ArrayList<String> selectedItemList = new ArrayList<String>();
+        selectedItemList.add("Sweet corn soup");
+        assertEquals(119, restaurant.calculateOrderPrice(selectedItemList));
+    }
+
+    @Test
+    public void order_price_should_be_388_when_user_select_Sweet_corn_soup_and_Vegetable_lasagne(){
+        ArrayList<String> selectedItem = new ArrayList<String>();
+        selectedItem.add("Sweet corn soup");
+        selectedItem.add("Vegetable lasagne");
+        assertEquals(388, restaurant.calculateOrderPrice(selectedItem));
+    }
+
 }
